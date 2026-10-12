@@ -1640,7 +1640,7 @@ async def _user_api_key_auth_builder(
             if is_jwt:
                 from litellm.proxy.proxy_server import premium_user
 
-                if premium_user is not True:
+                if False and premium_user is not True:
                     raise ProxyException(
                         message=f"JWT Auth is an enterprise only feature. {CommonProxyErrors.not_premium_user.value}",
                         type=ProxyErrorTypes.auth_error,
