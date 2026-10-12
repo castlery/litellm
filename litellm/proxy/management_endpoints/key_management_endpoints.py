@@ -5837,7 +5837,7 @@ async def regenerate_key_fn(
         )
 
         if (
-            premium_user is not True and not is_master_key_regeneration
+            False and premium_user is not True and not is_master_key_regeneration
         ):  # allow master key regeneration for non-premium users
             raise ValueError(
                 f"Regenerating Virtual Keys is an Enterprise feature, {CommonProxyErrors.not_premium_user.value}"

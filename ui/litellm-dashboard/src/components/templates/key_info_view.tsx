@@ -569,10 +569,7 @@ export default function KeyInfoView({
         isBlocked={isBlocked}
         canModifyKey={canModifyKey}
         backButtonText={backButtonText}
-        regenerateDisabled={!premiumUser}
-        regenerateTooltip={
-          !premiumUser ? "This is a LiteLLM Enterprise feature, and requires a valid key to use." : undefined
-        }
+        regenerateDisabled={false}
       />
 
       {/* Add RegenerateKeyModal */}
