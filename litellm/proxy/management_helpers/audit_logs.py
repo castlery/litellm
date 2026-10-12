@@ -213,7 +213,7 @@ async def create_audit_log_for_update(request_data: LiteLLM_AuditLogs):
 
     from litellm.proxy.proxy_server import premium_user, prisma_client
 
-    if premium_user is not True:
+    if False and premium_user is not True:
         return
 
     verbose_proxy_logger.debug("creating audit log for %s", request_data)
