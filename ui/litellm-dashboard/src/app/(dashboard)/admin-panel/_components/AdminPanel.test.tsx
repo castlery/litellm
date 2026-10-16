@@ -182,6 +182,17 @@ describe("AdminPanel", () => {
     });
   });
 
+  it("should let a non-premium user manage allowed IPs", async () => {
+    const user = userEvent.setup();
+    mockGetAllowedIPs.mockResolvedValue(["192.168.1.1"]);
+    render(<AdminPanel />);
+    await user.click(screen.getByRole("tab", { name: /security settings/i }));
+    await user.click(screen.getByRole("button", { name: /allowed ips/i }));
+    const dialog = await screen.findByRole("dialog", { name: /manage allowed ip addresses/i });
+    expect(within(dialog).getByText("192.168.1.1")).toBeInTheDocument();
+    expect(mockGetAllowedIPs).toHaveBeenCalledWith("test-token");
+  });
+
   describe("Allowed IPs", () => {
     beforeEach(async () => {
       const user = userEvent.setup();

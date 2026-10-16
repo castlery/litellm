@@ -106,10 +106,6 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ proxySettings }) => {
 
   const handleShowAllowedIPs = async () => {
     try {
-      if (premiumUser !== true) {
-        toast.fromError("This feature is only available for premium users. Please upgrade your account.");
-        return;
-      }
       if (accessToken) {
         const data = await getAllowedIPs(accessToken);
         setAllowedIPs(data && data.length > 0 ? data : [all_ip_address_allowed]);
@@ -121,9 +117,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ proxySettings }) => {
       toast.fromError(`Failed to fetch allowed IPs ${error}`);
       setAllowedIPs([all_ip_address_allowed]);
     } finally {
-      if (premiumUser === true) {
-        setIsAllowedIPModalVisible(true);
-      }
+      setIsAllowedIPModalVisible(true);
     }
   };
 
